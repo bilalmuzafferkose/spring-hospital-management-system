@@ -17,8 +17,9 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
+    //Jwt token uretmemizi sagliyor temelde
 
-    @Value("${security.jwt.secret-key}")
+    @Value("${security.jwt.secret-key}") //HS256
     private String SECRET_KEY;
     @Value("${security.jwt.expiration-time}")
     private long jwtExpiration;
@@ -27,7 +28,7 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
-    public boolean isValid(String token, UserDetails user) {
+    public boolean isValid(String token, UserDetails user) { //gelen tokeni validate etmeliyiz. onemli olan username ve expired date validate etmek gerekiyor
         String username = extractUsername(token);
         return (username.equals(user.getUsername())) && !isTokenExpired(token);
     }

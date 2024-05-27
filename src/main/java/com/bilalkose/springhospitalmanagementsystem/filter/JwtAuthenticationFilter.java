@@ -19,7 +19,7 @@ import java.io.IOException;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
+    //Gelen request icindeki tokeni validate edecek. Her request geldiginde bu filtera gelecek
     private final JwtService jwtService;
     private final UserDetailsImpl userDetailsService;
 
@@ -46,6 +46,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String username = jwtService.extractUsername(token);
 
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            //username var ve token validate durumda
+            //o halde authentication bilgisini context e atayim ki tekrardan bu adimlara gelmesin
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 

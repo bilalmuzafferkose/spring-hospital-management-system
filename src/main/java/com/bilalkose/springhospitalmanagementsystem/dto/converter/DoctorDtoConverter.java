@@ -13,6 +13,7 @@ public class DoctorDtoConverter {
                 .citizenshipNumber(doctor.getCitizenshipNumber())
                 .name(doctor.getName())
                 .surname(doctor.getSurname())
+                .email(doctor.getEmail())
                 .birthday(doctor.getBirthday())
                 .build();
     }
@@ -33,6 +34,7 @@ public class DoctorDtoConverter {
                 .name(createDoctorRequest.getName())
                 .surname(createDoctorRequest.getSurname())
                 .email(createDoctorRequest.getEmail())
+                .birthday(createDoctorRequest.getBirthday())
                 .build();
     }
 }

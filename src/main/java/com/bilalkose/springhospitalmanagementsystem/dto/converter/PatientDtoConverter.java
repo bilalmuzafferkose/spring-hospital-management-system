@@ -21,6 +21,7 @@ public class PatientDtoConverter {
                 .citizenshipNumber(patient.getCitizenshipNumber())
                 .name(patient.getName())
                 .surname(patient.getSurname())
+                .email(patient.getEmail())
                 .birthday(patient.getBirthday())
                 .build();
     }
@@ -41,6 +42,7 @@ public class PatientDtoConverter {
                 .name(createPatientRequest.getName())
                 .surname(createPatientRequest.getSurname())
                 .email(createPatientRequest.getEmail())
+                .birthday(createPatientRequest.getBirthday())
                 .build();
     }
 }
