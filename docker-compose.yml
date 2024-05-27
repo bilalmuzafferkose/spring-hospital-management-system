@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql-container-hospital
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: spring_hospital
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - my-network
+  rabbitmq:
+    image: "rabbitmq:management"
+    container_name: "rabbitmq-container-hospital"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - "5672:5672"  # AMQP port
+      - "15672:15672" # RabbitMQ Management UI port
+    networks:
+      - my-network
+volumes:
+  mysql-data:
+
+networks:
+  my-network:
+    driver: bridge
